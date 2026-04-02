@@ -27,20 +27,14 @@ and generate action plans, and logs everything to Google Sheets for a permanent 
 ## 🗺️ Architecture
 
 ```
-Schedule Trigger (daily at 8am)
-        ↓
-Code Node — define list of websites to monitor
-        ↓
-Code Node — fetch/simulate SSL certificate data
-        ↓
-HTTP Request — send to Groq AI for risk assessment
-        ↓
-Code Node — map data to Google Sheets column names
-        ↓
-Google Sheets — append row to audit log
+```mermaid
+flowchart TD
+    A[⏰ Schedule Trigger\nDaily at 8am] --> B[💻 Code Node\n7 websites to monitor]
+    B --> C[💻 Code Node\nSSL expiry data]
+    C --> D[🌐 HTTP Request\nGroq AI - LLaMA 3.3-70b]
+    D --> E[💻 Code Node\nMap to sheet columns]
+    E --> F[📊 Google Sheets\nAppend audit log row]
 ```
-
----
 
 ## ⚙️ How It Works
 
